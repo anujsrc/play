@@ -188,6 +188,7 @@
    :onyx.bookkeeper/server? true
    :onyx.bookkeeper/local-quorum? true
    :onyx.bookkeeper/local-quorum-ports [3196 3197 3198]
+   :onyx.bookkeeper/delete-server-data? true
    :onyx/tenancy-id id})
 
 (def peer-config
