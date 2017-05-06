@@ -83,7 +83,7 @@
                    :trigger/id :sync
                    :trigger/refinement :onyx.refinements/accumulating
                    :trigger/on :onyx.triggers/segment
-                   :trigger/threshold [5 :elements]
+                   :trigger/threshold [10 :elements]
                    :trigger/sync ::dump-window!}]]
     {:workflow workflow
      :catalog catalog
@@ -147,10 +147,15 @@
 
 (defn run-flow
   [params]
-  (let [config (job-config params)
+  (let [_ (println "Initializing Job Config...")
+        config (job-config params)
+        _ (println "Preparing Job Config...")
         job (create-job params)
+        _ (println "Starting Onyx Environment...")
         env (start-env config)
+        _ (println "Starting Peer Group and Peers...")
         peer-config (start-peers config job)
+        _ (println "Running Job...")
         active-job (submit-job config job)]
     (merge {:env env :flow active-job} config job peer-config)))
 
@@ -161,8 +166,11 @@
 
 (defn stop-flow
   [{:keys [env] :as params}]
+  (println "Closing Channels...")
   (close-channels params)
+  (println "Stopping Peers and Peer Group...")
   (stop-peers params)
+  (println "Stopping Onyx Environment...")
   (stop-env env))
 
 (defn execute-flow
@@ -170,5 +178,5 @@
     :or {id (java.util.UUID/randomUUID) batch-size 10}}]
   (let [flow (run-flow {:id id :batch-size batch-size})
         result (process-data flow)]
-    (println result)
+    ;;(println result)
     (stop-flow flow)))
