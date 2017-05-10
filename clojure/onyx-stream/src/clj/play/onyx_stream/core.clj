@@ -6,7 +6,8 @@
             [play.onyx-stream.twitter.fixed-windows :as twitterfw]
             [play.onyx-stream.twitter.global-windows :as twittergw]
             [play.onyx-stream.twitter.sliding-windows :as twitterslw]
-            [play.onyx-stream.twitter.session-windows :as twitterssw]))
+            [play.onyx-stream.twitter.session-windows :as twitterssw]
+            [play.onyx-stream.twitter.chain-windows :as twitterchw]))
 
 (defn -main
   "Executes window samples"
@@ -20,4 +21,5 @@
     "twitter-slw" (twitterslw/execute-flow {})
     "twitter-gw" (twittergw/execute-flow {})
     "twitter-ssw" (twitterssw/execute-flow {})
-    (println "Usage: lein run <fw|slw|gw|ssw|twitter-fw|twitter-slw|twitter-gw|twitter-ssw>")))
+    "twitter-chain" (twitterchw/execute-flow {})
+    (println "Usage: lein run <fw|slw|gw|ssw|twitter-fw|twitter-slw|twitter-gw|twitter-ssw|twitter-chain>")))

@@ -16,3 +16,4 @@ where,
 * **twitter-slw**: Sliding Window (Twitter Example)
 * **twitter-gw**: Global Window (Twitter Example)
 * **twitter-ssw**: Session Window (Twitter Example)
+* **twitter-chain**: Chain two Fixed Windows (Twitter Example)
