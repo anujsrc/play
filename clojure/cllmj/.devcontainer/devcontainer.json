@@ -1,0 +1,57 @@
+{
+  "name": "Cllmj",
+  "build": {
+    "dockerfile": "./Dockerfile",
+    "context": ".",
+    "args": {
+      "VARIANT": "21-bookworm",
+      "CLOJURE_VERSION": "1.12.0",
+      "INSTALL_CLOJURE_CLI": "true",
+      "CLOJURE_CLI_VERSION": "1.12.0.1530",
+      "INSTALL_LEININGEN": "true",
+      "LEININGEN_VERSION": "stable",
+      "INSTALL_POLYLITH": "true",
+      "POLYLITH_VERSION": "0.2.21",
+      "INSTALL_BABASHKA": "true",
+      "BABASHKA_VERSION": "1.12.197",
+      "INSTALL_BOOT": "false",
+      "BOOT_VERSION": "2.8.3",
+      "INSTALL_PYTHON_DEPS": "true"
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "none",
+      "installMaven": "false",
+      "installGradle": "false"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "22.14.0"
+    }
+  },
+  "forwardPorts": [],
+  "containerEnv": {},
+  "remoteEnv": {
+    "PATH": "/.venv/bin:${containerEnv:PATH}"
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {},
+      "extensions": [
+        "ms-azuretools.vscode-docker",
+        "vscjava.vscode-java-pack",
+        "vscjava.vscode-java-debug",
+        "betterthantomorrow.calva",
+        "djblue.portal",
+        "ms-playwright.playwright",
+        "ms-python.python",
+        "ms-python.debugpy",
+        "ms-python.vscode-pylance",
+        "ms-toolsai.jupyter"
+      ]
+    }
+  },
+  "mounts": [
+    "source=${localEnv:HOME}/.m2/repository,target=/home/vscode/.m2/repository,type=bind,consistency=cached"
+  ]
+}

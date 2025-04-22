@@ -1,0 +1,27 @@
+# Utilities
+numpy~=2.2
+nltk~=3.9
+spacy~=3.8
+scikit-learn~=1.6
+textblob~=0.19
+pandas~=2.2
+datasets~=3.5
+
+# Core LLM & Transformers
+transformers~=4.51
+torch~=2.6
+accelerate~=1.6
+sentence-transformers~=4.1
+tokenizers~=0.21
+
+# Quantization / Performance
+bitsandbytes~=0.45
+optimum~=1.24
+
+# Platforms
+huggingface-hub~=0.30
+langchain~=0.3
+
+# APIs and Server
+fastapi~=0.115
+uvicorn~=0.34
